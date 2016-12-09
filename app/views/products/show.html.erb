@@ -23,6 +23,17 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
         </dl>
+
+        <ul>
+          <% @product.comments.each do |cmt| %>
+            <li>
+              <%= cmt[:content] %>
+            </li>
+          <% end %>
+        </ul>
+
+        <%= render 'comments/new_comment' %>
+
       </div>
     </div>
 
