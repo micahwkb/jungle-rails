@@ -9,11 +9,11 @@ Here are your order details
   <% if product = line_item.product %>
 
     <% item_total = product.price * quantity %>
-    <%= product.name %>
-    <%= product.description %>
-    <%= product.price %>
-    <%= quantity %>
-    <%= item_total %>
+    Product: <%= product.name %>
+    Description: <%= product.description %>
+    Unit price: <%= product.price %>
+    Quantity: <%= quantity %>
+    Item total: <%= item_total %>
 
   <% end %>
 <% end %>
