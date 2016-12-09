@@ -1,0 +1,21 @@
+== Thank you for your order from Jungle ==
+
+Here are your order details
+---------------------------
+
+<% @order.line_items.each do |line_item| %>
+
+  <% quantity = line_item.quantity.to_i %>
+  <% if product = line_item.product %>
+
+    <% item_total = product.price * quantity %>
+    <%= product.name %>
+    <%= product.description %>
+    <%= product.price %>
+    <%= quantity %>
+    <%= item_total %>
+
+  <% end %>
+<% end %>
+
+ORDER TOTAL: <%= @order.total %>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    <h1>Thank you for your order from Jungle</h1>
+    <p>Here are your order details</p>
+    <hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Quantity ordered</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.line_items.each do |line_item| %>
+          <%= render 'item', line_item: line_item %>
+        <% end %>
+      </tbody>
+    </table>
+    <tfoot>
+      <tr>
+        <th colspan="4">
+          ORDER TOTAL:
+        </th>
+        <th>
+          <%= @order.total %>
+        </th>
+      </tr>
+    </tfoot>
+
+  </body>
+</html>

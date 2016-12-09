@@ -53,6 +53,9 @@ class OrdersController < ApplicationController
       end
     end
     order.save!
+    # user = User.where(email: order.email).take!
+    # Send user order details via email
+    UserMailer.order_email(order).deliver_now
     order
   end
 
