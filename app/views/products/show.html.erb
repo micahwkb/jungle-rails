@@ -25,14 +25,14 @@
         </dl>
 
         <ul>
-          <% @product.comments.each do |cmt| %>
+          <% @product.ratings.each do |r| %>
             <li>
-              <%= cmt[:content] %>
+              <%= r[:content] %>
             </li>
           <% end %>
         </ul>
 
-        <%= render 'comments/new_comment' %>
+        <%= render 'ratings/new_rating' %>
 
       </div>
     </div>
