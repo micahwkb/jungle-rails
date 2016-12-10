@@ -1,0 +1,26 @@
+<% @product.ratings.each do |r| %>
+  <div>
+    <% 1.upto(r[:rating]) do |star| %>
+      <i class="fa fa-star" aria-hidden="true" style="display: inline"></i>
+    <% end %>
+    <!-- Show blank stars so reviews align nicely -->
+    <% if r[:rating] < 5 %>
+      <% 5.downto(r[:rating] + 1) do |blank|%>
+        <i class="fa fa-star-o" aria-hidden="true" style="display: inline"></i>
+      <% end %>
+    <% end %>
+    <% if current_user && r.user_id == current_user.id %>
+      <!-- Delete review button / text -->
+      <%= link_to fa_icon('trash'),
+          product_rating_path(@product, r.id),
+          method: :delete,
+          data: { confirm: "Delete your review?",
+          class: 'btn btn-sm' } %>
+        <span class="delete-review">delete</span>
+
+    <% end %>
+    <br>
+    <span><%= r[:description] %></span>
+  </div>
+
+<% end %>

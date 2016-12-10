@@ -5,9 +5,7 @@
   </header>
 
   <article class="product-detail">
-
     <div class="row">
-
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
@@ -18,25 +16,34 @@
           <dd><%= @product.name %></dd>
           <dt>Description</dt>
           <dd><%= @product.description %></dd>
-          <dt>Quantity</dt>
-          <dd><%= @product.quantity %></dd>
+          <dt>Quantity available</dt>
+          <dd><%= @product.quantity == 0 ? "-- Out of stock --" : @product.quantity%></dd>
           <dt>Price</dt>
-          <dd><%= @product.price %></dd>
+          <dd>$<%= @product.price %></dd>
         </dl>
-
-        <ul>
-          <% @product.comments.each do |cmt| %>
-            <li>
-              <%= cmt[:content] %>
-            </li>
-          <% end %>
-        </ul>
-
-        <%= render 'comments/new_comment' %>
-
       </div>
-    </div>
 
+    </div>
+    <hr>
+    <div class="col-lg-12 reviews">
+      <h4>Reviews</h4>
+
+      <% if @product.average_rating == 0 %>
+        <p><em>- Not rated yet -</em></p>
+      <% else %>
+        <p>Average rating:
+          <strong>
+            <%= @product.average_rating %> / 5
+          </strong>
+        </p>
+        <%= render 'ratings/ratings_list' %>
+      <% end %>
+
+      <% if !@reviewed_by_user && current_user %>
+        <br>
+        <%= render 'ratings/new_rating' %>
+      <% end %>
+    </div>
   </article>
 
 </section>

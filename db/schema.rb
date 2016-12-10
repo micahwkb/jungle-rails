@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209152125) do
+ActiveRecord::Schema.define(version: 20161210002251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,13 +61,26 @@ ActiveRecord::Schema.define(version: 20161209152125) do
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.text     "description"
+    t.integer  "rating",      default: 3
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "ratings", ["product_id"], name: "index_ratings_on_product_id", using: :btree
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.boolean  "admin",          default: false
   end
 
   add_foreign_key "line_items", "orders"
