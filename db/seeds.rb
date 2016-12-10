@@ -160,7 +160,7 @@ User.create!({
   first_name: 'Hippy',
   last_name: 'Hipsterson',
   email: 'h@h.com',
-  password_digest: "$2a$10$DxnlH.mcHrzJwmyJ6lpOfe3L/KMHwq7u2.G/TQxcC.cGFb86nLcM2",
+  password_digest: '$2a$10$DxnlH.mcHrzJwmyJ6lpOfe3L/KMHwq7u2.G/TQxcC.cGFb86nLcM2',
   admin: false
   })
 
