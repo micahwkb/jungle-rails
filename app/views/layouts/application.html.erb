@@ -12,7 +12,11 @@
 
   <main class="container">
     <% if flash.notice.present? %>
-      <div><%= flash.notice %></div>
+      <div class="flash-notice">
+        <h4>
+          <%= flash.notice %>
+        </h4>
+      </div>
     <% end %>
 
     <%= yield %>

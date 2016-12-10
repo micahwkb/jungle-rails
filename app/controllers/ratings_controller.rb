@@ -1,14 +1,14 @@
 class RatingsController < ApplicationController
 
   def create
-    @rating = Rating.new(description: params[:rating][:description],
+    @rating = Rating.new(description: params[:rating][:description].strip,
                          user_id: current_user.id,
                          product_id: params[:product_id],
                          rating: params[:rating][:rating])
     if @rating.save
       redirect_to "/products/#{params[:product_id]}"
     else
-      flash[:notice] = "Unable to save review"
+      flash[:notice] = "Unable to save your review - was the description empty?"
       redirect_to "/products/#{params[:product_id]}"
     end
   end
