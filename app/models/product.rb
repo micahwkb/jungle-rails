@@ -12,4 +12,11 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true
   validates :category, presence: true
 
+  def average_rating
+    if self.ratings.count == 0
+      'unrated'
+    else
+      self.ratings.average(:rating).round
+    end
+  end
 end

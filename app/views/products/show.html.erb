@@ -18,23 +18,50 @@
           <dd><%= @product.name %></dd>
           <dt>Description</dt>
           <dd><%= @product.description %></dd>
-          <dt>Quantity</dt>
-          <dd><%= @product.quantity %></dd>
+          <dt>Quantity available</dt>
+          <dd><%= @product.quantity == 0 ? "-- Out of stock --" : @product.quantity%></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
         </dl>
-
-        <ul>
-          <% @product.ratings.each do |r| %>
-            <li>
-              <%= r[:content] %>
-            </li>
-          <% end %>
-        </ul>
-
-        <%= render 'ratings/new_rating' %>
-
       </div>
+
+    </div>
+    <div class="col-sm-8 reviews">
+    <h4>Reviews</h4>
+
+    <% if @product.average_rating == 'unrated' %>
+      <p><em>Not rated yet</em></p>
+    <% else %>
+      <p>Average rating:
+        <strong>
+          <%= @product.average_rating %> / 5
+        </strong>
+      </p>
+    <% end %>
+    <% if current_user %>
+      <%= render 'ratings/new_rating' %>
+    <% end %>
+    <% @product.ratings.each do |r| %>
+      <!-- Only show ratings that include a description -->
+      <% if r[:description] != '' %>
+        <p>
+          <% 1.upto(r[:rating]) do |star| %>
+            <i class="fa fa-star" aria-hidden="true" style="display: inline"></i>
+          <% end %>
+          <!-- Show blank stars so reviews align nicely -->
+          <% if r[:rating] < 5 %>
+            <% 5.downto(r[:rating] + 1) do |blank|%>
+            <i class="fa fa-star-o" aria-hidden="true" style="display: inline"></i>
+            <% end %>
+          <% end %>
+
+          <%= r[:description] %>
+        </p>
+
+      <% end %>
+    <% end %>
+      </ul>
+
     </div>
 
   </article>

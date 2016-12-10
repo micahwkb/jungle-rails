@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209192716) do
+ActiveRecord::Schema.define(version: 20161210002251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(version: 20161209192716) do
     t.integer  "product_id"
     t.integer  "user_id"
     t.text     "description"
-    t.integer  "rating"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "rating",      default: 3
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "ratings", ["product_id"], name: "index_ratings_on_product_id", using: :btree
@@ -78,8 +78,9 @@ ActiveRecord::Schema.define(version: 20161209192716) do
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.boolean  "admin",          default: false
   end
 
   add_foreign_key "line_items", "orders"

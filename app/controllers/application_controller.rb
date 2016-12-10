@@ -9,13 +9,18 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to '/login' unless current_user
+    redirect_to '/login' unless current_user && current_user.admin
+  end
+
+  def authorize_admin
+    if !current_user || !current_user.admin
+      redirect_to '/login'
+    end
   end
 
 private
 
   def cart
-    # value = cookies[:cart] || JSON.generate({})
     @cart ||= cookies[:cart].present? ? JSON.parse(cookies[:cart]) : {}
   end
   helper_method :cart

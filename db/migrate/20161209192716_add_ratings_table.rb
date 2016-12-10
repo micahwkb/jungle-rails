@@ -4,7 +4,7 @@ class AddRatingsTable < ActiveRecord::Migration
       t.integer :product_id
       t.integer :user_id
       t.text :description
-      t.integer :rating
+      t.integer :rating, default: 3
       t.timestamps null: false
     end
     add_index :ratings, :product_id
