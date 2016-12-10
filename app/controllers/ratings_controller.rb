@@ -12,4 +12,11 @@ class RatingsController < ApplicationController
       redirect_to "/products/#{params[:product_id]}"
     end
   end
+
+  def destroy
+    # byebug
+    @rating = Rating.find params[:id]
+    @rating.destroy
+    redirect_to product_path(params[:product_id]), notice: 'Rating deleted!'
+  end
 end

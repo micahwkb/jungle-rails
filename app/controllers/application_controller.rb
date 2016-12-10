@@ -12,12 +12,6 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user && current_user.admin
   end
 
-  def authorize_admin
-    if !current_user || !current_user.admin
-      redirect_to '/login'
-    end
-  end
-
 private
 
   def cart
