@@ -26,7 +26,8 @@
       </div>
 
     </div>
-    <div class="col-sm-8 reviews">
+    <hr>
+    <div class="col-lg-12 reviews">
       <h4>Reviews</h4>
 
       <% if @product.average_rating == 'unrated' %>
@@ -40,9 +41,7 @@
       <% end %>
 
       <% if !@reviewed_by_user && current_user %>
-
-          <%= render 'ratings/new_rating' %>
-
+        <%= render 'ratings/new_rating' %>
       <% end %>
 
       <%= render 'ratings/ratings_list' %>

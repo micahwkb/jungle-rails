@@ -1,17 +1,17 @@
 <%= form_for [@product, @rating] do |f| %>
-  <div class="control-group">
-    <p>Add your opinion:</p>
+  <div class="new-rating">
+    <p>What's your opinion?</p>
 
     <%= f.label :rating %>:<br>
-    <strong><span>1</span>
+    <span>1</span>
     <%= f.radio_button(:rating, 1)%>
     <%= f.radio_button(:rating, 2)%>
     <%= f.radio_button(:rating, 3)%>
     <%= f.radio_button(:rating, 4)%>
     <%= f.radio_button(:rating, 5)%>
-    <span>5</span><br></strong>
+    <span>5</span><br><br>
     <%= f.label :description %>:<br>
-    <%= f.text_area :description, class: "input-xlarge" %><br>
+    <%= f.text_area :description %><br>
     <%= f.submit('add review', class: "btn btn-success") %>
   <div>
 <% end %>
