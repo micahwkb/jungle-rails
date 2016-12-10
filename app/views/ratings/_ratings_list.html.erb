@@ -1,0 +1,19 @@
+<% @product.ratings.each do |r| %>
+  <!-- Only show ratings that include a description -->
+    <%= render 'ratings/ratings_list'%>
+  <% if r[:description] != '' %>
+  <p>
+    <% 1.upto(r[:rating]) do |star| %>
+      <i class="fa fa-star" aria-hidden="true" style="display: inline"></i>
+    <% end %>
+    <!-- Show blank stars so reviews align nicely -->
+    <% if r[:rating] < 5 %>
+      <% 5.downto(r[:rating] + 1) do |blank|%>
+      <i class="fa fa-star-o" aria-hidden="true" style="display: inline"></i>
+      <% end %>
+    <% end %>
+
+    <%= r[:description] %>
+  </p>
+  <% end %>
+<% end %>

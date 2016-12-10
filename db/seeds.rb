@@ -141,4 +141,62 @@ cat4.products.create!({
   price: 28.00
   })
 
+## USERS
+
+puts "Creating a few users - use t@t.com for admin testing, password '1'"
+puts "...for non-admin use h@h.com, same password"
+
+User.destroy_all
+
+User.create!({
+  first_name: 'Testy',
+  last_name: 'Testerson',
+  email: 't@t.com',
+  password_digest: '$2a$10$r01N1PZuX3cYkhKD.PvnCOePI6jHH1V2/1trahxYUb8nUwrBsAo76',
+  admin: true
+  })
+
+User.create!({
+  first_name: 'Hippy',
+  last_name: 'Hipsterson',
+  email: 'h@h.com',
+  password_digest: "$2a$10$DxnlH.mcHrzJwmyJ6lpOfe3L/KMHwq7u2.G/TQxcC.cGFb86nLcM2",
+  admin: false
+  })
+
+## REVIEWS
+
+puts 'Creating some initial reviews'
+
+Rating.destroy_all
+
+Rating.create!({
+  product_id: 4,
+  user_id: 2,
+  description: 'So great!',
+  rating: 4
+  })
+
+Rating.create!({
+  product_id: 3,
+  user_id: 2,
+  description: "It's the worst thing since the pre-mustache era",
+  rating: 1
+  })
+
+Rating.create!({
+  product_id: 7,
+  user_id: 2,
+  description: "Not really sure it's hipster enough",
+  rating: 3
+  })
+
+Rating.create!({
+  product_id: 10,
+  user_id: 2,
+  description: 'perfect, I want to marry it',
+  rating: 5
+  })
+
+
 puts "DONE!"
