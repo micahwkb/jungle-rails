@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
 
   def average_rating
     if self.ratings.count == 0
-      'unrated'
+      return 0
     else
       self.ratings.average(:rating).round
     end

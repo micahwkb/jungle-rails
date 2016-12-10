@@ -1,6 +1,6 @@
 <%= form_for [@product, @rating] do |f| %>
   <div class="new-rating">
-    <p>What's your opinion?</p>
+    <p>What's your opinion, <%= current_user['first_name']%>?</p>
 
     <%= f.label :rating %>:<br>
     <span>1</span>

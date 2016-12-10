@@ -1,0 +1,10 @@
+<!-- Render stars for rating average -->
+<% 1.upto(product.average_rating.to_i) do |star| %>
+  <i class="fa fa-star" aria-hidden="true" style="display: inline"></i>
+<% end %>
+<!-- Render blank stars for padding -->
+<% if product.average_rating.to_i < 5 %>
+  <% 5.downto(product.average_rating.to_i + 1) do |blank|%>
+    <i class="fa fa-star-o" aria-hidden="true" style="display: inline"></i>
+  <% end %>
+<% end %>

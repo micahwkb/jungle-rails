@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
   def show
     @rating = Rating.new
     @product = Product.find params[:id]
+    @average_rating = @product.average_rating.to_i
+
     if current_user
       @reviewed_by_user = reviewed_by_current_user
     end
