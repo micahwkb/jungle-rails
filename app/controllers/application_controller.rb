@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user && current_user.admin
   end
 
+  def auth_non_admin
+    redirect_to '/login' unless current_user
+  end
+
 private
 
   def cart
