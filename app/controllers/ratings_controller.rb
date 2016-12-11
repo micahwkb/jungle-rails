@@ -9,10 +9,10 @@ class RatingsController < ApplicationController
                          rating: params[:rating][:rating])
     if @rating.save
       redirect_to product_path(params[:product_id]),
-                  notice: 'Thanks for your review'
+                  notice: 'Thanks for your review!'
     else
       redirect_to product_path(params[:product_id]),
-                  notice: 'Unable to save your review - was the description empty?'
+                  notice: 'Unable to save review - please provide a description'
     end
   end
 
