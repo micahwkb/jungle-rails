@@ -4,7 +4,6 @@ class Product < ActiveRecord::Base
   mount_uploader :image, ProductImageUploader
 
   belongs_to :category
-  # has_many :comments
   has_many :ratings
 
   validates :name, presence: true
