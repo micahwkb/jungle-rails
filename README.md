@@ -2,6 +2,15 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+## Learned during this project
+* The Rails MVC environment
+* Contributing bug fixes and features in an established, unfamiliar codebase
+ 
+### Features built:
+* Rating system, where only authenticated accounts may create ratings (or delete their own)
+* Admin page security
+* Admin product category view & creation functions
+* User authentication & session management
 
 ## Setup
 
