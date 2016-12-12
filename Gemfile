@@ -45,11 +45,19 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'dotenv-rails'
   gem 'pry-rails'
+  # Testing suite
+  gem 'rspec-rails', '~> 3.5'
+  gem 'capybara', '~> 2.5'
+  gem 'factory_girl_rails', '~> 4.5.0'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'database_cleaner', '~> 1.5'
+  # gem 'faker', '~> 1.6.1'
 end
 
 group :development do
-  # Testing suite
-  gem 'rspec-rails', '~> 3.5'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
