@@ -75,6 +75,14 @@ RSpec.describe User, type: :model do
       )
     expect(duplicate.errors.full_messages[0]).to eq("Email has already been taken")
   end
+
+  it 'requires passwords that are 8+ characters' do
+    @user.password              = '123'
+    @user.password_confirmation = '123'
+    @user.save
+    expect(@user.errors.full_messages[0]).to eq("Password is too short (minimum is 8 characters)")
+  end
+
 end
 
 # tests below are functional - uses shoulda/matchers
