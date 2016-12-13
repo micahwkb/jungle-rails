@@ -9,12 +9,21 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @rating = Rating.new
-    @product = Product.find params[:id]
-    @average_rating = @product.average_rating.to_i
+    @product = validate_product_id(params[:id])
+    @rating  = Rating.new
 
     if current_user
       @reviewed_by_user = reviewed_by_current_user
+    end
+  end
+
+  def validate_product_id(id)
+    if Product.where(id: id).count == 0
+      redirect_to root_path
+    else
+      @product = Product.find(id)
+      @average_rating = @product.average_rating.to_i
+      @product
     end
   end
 end
