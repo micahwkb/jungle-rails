@@ -18,4 +18,8 @@ class Product < ActiveRecord::Base
       self.ratings.average(:rating).round
     end
   end
+
+  def url
+    "https://s3-us-west-2.amazonaws.com/heroku-jungle/#{image.url.split('/').last}"
+  end
 end
