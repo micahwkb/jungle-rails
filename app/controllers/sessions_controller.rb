@@ -4,23 +4,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    # if user exists AND entered password is correct
-    if user && user.authenticate(params[:password])
+    if user = User.authenticate_with_credentials(params[:email], params[:password])
       session[:user_id] = user.id
-      # redirect based on admin status
       if user.admin?
         redirect_to admin_root_path
       else
         redirect_to root_path
       end
-
     else
-      if !user
-        redirect_to login_path, notice: 'Invalid email'
-      else
-        redirect_to login_path, notice: 'Invalid password'
-      end
+      redirect_to login_path, notice: 'Invalid login'
     end
   end
 
@@ -28,5 +20,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
-
 end
