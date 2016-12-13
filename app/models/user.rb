@@ -6,7 +6,7 @@
   validates :email, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  # validates :password, length: { minimum: 8 }
+  validates :password, length: { minimum: 8 }
 
   def self.authenticate_with_credentials(email, password)
     if @user = User.find_by_email(email.downcase.strip)
