@@ -1,9 +1,0 @@
-# Leaving this here so that migrations don't break, but it is unused (was Faisal's example)
-# class AddCommentsTable < ActiveRecord::Migration
-#   def change
-#     create_table :comments do |c|
-#       c.text :content
-#       c.integer :product_id, references: :products
-#     end
-#   end
-# end
