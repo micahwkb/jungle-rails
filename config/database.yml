@@ -17,4 +17,5 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  # url: <%= ENV['DATABASE_URL'] %>
+  url: "postgres://haxthdavcegcke:afecf4c5b9286d4cc4cdeb40fd40c6b16f3fe4dc1b47c3d39a90d6a78e93a5d1@ec2-23-23-111-171.compute-1.amazonaws.com:5432/d9sej84n3p40q4"
