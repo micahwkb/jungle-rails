@@ -39,7 +39,7 @@ Product.destroy_all
 cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
-  image: open_asset('apparel1.jpg'),
+  image: open_asset('https://s3-us-west-2.amazonaws.com/heroku-jungle/apparel1.jpg?X-Amz-Date=20161213T135003Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=862e79a49929a2842a8c998f8f29471619499fecb9d9ca43e9cbac5c312dc05c&X-Amz-Credential=ASIAJFNLUI6ELSDJO6SA/20161213/us-west-2/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEJ7//////////wEaDHjo%2B5WPlb6/dbZvoSL6AYCPOjS1WMU6Y656cnaC1Wgx6HTM%2By1V85RLM7r9Iwcthn0ArjdII6kTgu1ZxgE///Sqd/gZjZZF89mHjInV3CaYxO5/br8SyuPBJlY2P/Rb8wkUovoaDH9Yvumi3k5fCEUHZ6dMuifolpV4B60%2BmqiixBnzEw3Cz%2BhGw68/VSW4vXQr1p1FCufgJzGFavUEQSXuqCrprQ%2B3KaBTJU0SWXyictgdcLQ0T6zDuDb5joTmqHQHkkVzbQcRCtsFGMt3xyf7QPgVEFIH3Mu7xzijBmMp9H1pCaoG22Ovx7OWud15BbjUZJzsUvuCH6suuyw/cVPLpGakioKX0%2B8og/29wgU%3D'),
   quantity: 10,
   price: 64.99
 })

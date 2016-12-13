@@ -35,6 +35,8 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'stripe'
 gem 'faker'
+# Amazon cloud service for image hosting
+gem 'aws-sdk', '~> 2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
