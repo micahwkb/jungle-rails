@@ -1,7 +1,6 @@
 class RatingsController < ApplicationController
 
-  # before_filter :auth_non_admin
-  before_filter :authenticate_with_credentials
+  before_filter :auth_non_admin
 
   def create
     @rating = Rating.new(description: params[:rating][:description].strip,
