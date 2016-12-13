@@ -67,8 +67,6 @@ RSpec.describe User, type: :model do
     it 'does not allow creation with existing email using mixed-case' do
       @user.email     = 'testing@test.com'
       @user.save
-      expect(@user).to be_persisted
-
       duplicate_user  = User.create(
         first_name: Faker::Name.first_name,
         last_name:  Faker::Name.last_name,
@@ -76,7 +74,7 @@ RSpec.describe User, type: :model do
         password:   'password',
         password_confirmation: 'password'
         )
-      expect(duplicate_user).to be_invalid
+      expect(duplicate_user.errors.full_messages.first).to eq("Email has already been taken")
     end
 
     it 'requires passwords that are 8+ characters' do

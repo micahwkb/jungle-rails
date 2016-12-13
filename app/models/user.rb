@@ -2,7 +2,7 @@
 
   has_secure_password
 
-  before_save :email_to_lower
+  before_validation :email_to_lower
 
   validates :email, uniqueness: true
   validates :email, presence: true
@@ -11,6 +11,7 @@
   validates :password, length: { minimum: 8 }
 
   def email_to_lower
+    return if !email
     email.downcase!
   end
 
